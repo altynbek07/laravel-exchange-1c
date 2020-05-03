@@ -11,11 +11,20 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.2.5"
+        "php": "^7.2.5",
+        "illuminate/support": "^6.0|^7.0",
+        "carono/commerceml": "^0.2.5"
     },
     "autoload": {
         "psr-4": {
             "Altynbek07\\Exchange1C\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Altynbek07\\Exchange1C\\Exchange1CServiceProvider"
+            ]
         }
     }
 }
