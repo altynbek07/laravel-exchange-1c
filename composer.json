@@ -1,0 +1,21 @@
+{
+    "name": "altynbek07/laravel-exchange-1c",
+    "description": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "altynbek07",
+            "email": "altynbek.kazezov.97@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Altynbek07\\Exchange1C\\": "src"
+        }
+    }
+}
