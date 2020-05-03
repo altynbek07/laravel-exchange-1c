@@ -20,10 +20,10 @@ class Exchange1CServiceProvider extends ServiceProvider
     public function boot()
     {
         // routes
-        $this->loadRoutesFrom(__DIR__.'/../publish/routes.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         // config
-        $this->publishes([__DIR__.'/../publish/config/' => config_path()], 'config');
+        $this->publishes([__DIR__ . '/../config/' => config_path()], 'config');
     }
 
     /**
@@ -32,7 +32,7 @@ class Exchange1CServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(Config::class, function ($app) {
-            return new Config($app['config']['exchange1c']);
+            return new Config($app['config']['exchange-1c']);
         });
 
         $this->app->singleton(EventDispatcherInterface::class, function ($app) {
