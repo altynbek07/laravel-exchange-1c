@@ -30,19 +30,19 @@ class ImportController extends Controller
                 }
 
                 $response = $service->$mode();
-                \Log::debug('exchange_1c: $response='."\n".$response);
+                \Log::debug('exchange_1c:' . PHP_EOL . '$mode: ' . $mode . PHP_EOL . '$response:' . PHP_EOL . $response);
 
                 return response($response, 200, ['Content-Type', 'text/plain']);
             } else {
                 throw new \LogicException(sprintf('Logic for method %s not released', $type));
             }
         } catch (Exchange1CException $e) {
-            \Log::error("exchange_1c: failure \n".$e->getMessage()."\n".$e->getFile()."\n".$e->getLine()."\n");
+            \Log::error("exchange_1c: failure \n" . $e->getMessage() . "\n" . $e->getFile() . "\n" . $e->getLine() . "\n");
 
             $response = "failure\n";
-            $response .= $e->getMessage()."\n";
-            $response .= $e->getFile()."\n";
-            $response .= $e->getLine()."\n";
+            $response .= $e->getMessage() . "\n";
+            $response .= $e->getFile() . "\n";
+            $response .= $e->getLine() . "\n";
 
             return response($response, 500, ['Content-Type', 'text/plain']);
         }
