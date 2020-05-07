@@ -69,6 +69,7 @@ class CategoryService
      */
     public function import(): void
     {
+        $this->_ids = [];
         $filename = basename($this->request->get('filename'));
         $commerce = new CommerceML();
         $commerce->loadImportXml($this->config->getFullPath($filename));

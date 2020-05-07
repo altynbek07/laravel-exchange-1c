@@ -78,7 +78,8 @@ class OfferService
                 $this->parseProductOffer($model, $offer);
                 $this->_ids[] = $model->getPrimaryKey();
             } else {
-                throw new Exchange1CException("Продукт $productId не найден в базе");
+                \Log::error("Продукт $productId не найден в базе");
+                continue;
             }
             unset($model);
         }
