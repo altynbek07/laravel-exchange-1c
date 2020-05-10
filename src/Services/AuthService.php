@@ -55,7 +55,7 @@ class AuthService
         ) {
             $this->session->save();
             $response = "success\n";
-            $response .= config('session.cookie') . "\n";
+            $response .= config('session.cookie', 'laravel_session') . "\n";
             $response .= $this->session->getId() . "\n";
             $response .= 'timestamp=' . time();
             if ($this->session instanceof SessionInterface) {

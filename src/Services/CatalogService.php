@@ -94,7 +94,7 @@ class CatalogService extends AbstractService
         }
 
         $response = "success\n";
-        $response .= config('session.cookie') . "\n";
+        $response .= config('session.cookie', 'laravel_session') . "\n";
         $response .= $this->request->getSession()->getId() . "\n";
         $response .= 'timestamp=' . time();
 

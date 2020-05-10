@@ -78,7 +78,9 @@ class OfferService
                 $this->parseProductOffer($model, $offer);
                 $this->_ids[] = $model->getPrimaryKey();
             } else {
-                \Log::error("Продукт $productId не найден в базе");
+                if (config('exchange-1c.logging', true)) {
+                    \Log::error("Продукт $productId не найден в базе");
+                }
                 continue;
             }
             unset($model);
