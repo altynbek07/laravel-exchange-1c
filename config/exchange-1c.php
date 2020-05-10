@@ -32,6 +32,10 @@ return [
     /**
      *
      */
+    'importFiles' => ['import.xml', 'offers.xml'],
+    /**
+     *
+     */
     'models' => [
         \Altynbek07\Exchange1C\Interfaces\GroupInterface::class => \App\Models\Category::class,
         \Altynbek07\Exchange1C\Interfaces\ProductInterface::class => \App\Models\Product::class,

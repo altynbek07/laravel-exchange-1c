@@ -82,15 +82,17 @@ class CatalogService extends AbstractService
     {
         $this->authService->auth();
         $filename = $this->request->get('filename');
-        switch ($filename) {
-            case 'import.xml': {
-                    $this->categoryService->import();
-                    break;
-                }
-            case 'offers.xml': {
-                    $this->offerService->import();
-                    break;
-                }
+        if (in_array($filename, config('exchange-1c.importFiles', ['import.xml', 'offers.xml']))) {
+            switch ($filename) {
+                case 'import.xml': {
+                        $this->categoryService->import();
+                        break;
+                    }
+                case 'offers.xml': {
+                        $this->offerService->import();
+                        break;
+                    }
+            }
         }
 
         $response = "success\n";
