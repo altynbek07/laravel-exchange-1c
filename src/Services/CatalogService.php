@@ -86,10 +86,12 @@ class CatalogService extends AbstractService
             switch ($filename) {
                 case 'import.xml': {
                         $this->categoryService->import();
+
                         break;
                     }
                 case 'offers.xml': {
                         $this->offerService->import();
+
                         break;
                     }
             }

@@ -42,7 +42,7 @@ class FileLoaderService
             throw new \LogicException('This method is not released');
         } else {
             $directory = dirname($filePath);
-            if (!is_dir($directory)) {
+            if (! is_dir($directory)) {
                 mkdir($directory, 0755, true);
             }
             $f = fopen($filePath, 'w+');

@@ -81,6 +81,7 @@ class OfferService
                 if (config('exchange-1c.logging', true)) {
                     \Log::error("Продукт $productId не найден в базе");
                 }
+
                 continue;
             }
             unset($model);

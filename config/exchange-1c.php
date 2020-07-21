@@ -1,5 +1,9 @@
 <?php
 
+use Altynbek07\Exchange1C\Interfaces\GroupInterface;
+use Altynbek07\Exchange1C\Interfaces\OfferInterface;
+use Altynbek07\Exchange1C\Interfaces\ProductInterface;
+
 return [
     /**
      *
@@ -37,8 +41,8 @@ return [
      *
      */
     'models' => [
-        \Altynbek07\Exchange1C\Interfaces\GroupInterface::class => \App\Models\Category::class,
-        \Altynbek07\Exchange1C\Interfaces\ProductInterface::class => \App\Models\Product::class,
-        \Altynbek07\Exchange1C\Interfaces\OfferInterface::class => \App\Models\Offer::class,
+        GroupInterface::class => \App\Models\Category::class,
+        ProductInterface::class => \App\Models\Product::class,
+        OfferInterface::class => \App\Models\Offer::class,
     ],
 ];

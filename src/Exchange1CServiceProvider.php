@@ -2,10 +2,8 @@
 
 namespace Altynbek07\Exchange1C;
 
-use Altynbek07\Exchange1C\Config;
 use Altynbek07\Exchange1C\Interfaces\EventDispatcherInterface;
 use Altynbek07\Exchange1C\Interfaces\ModelBuilderInterface;
-use Altynbek07\Exchange1C\ModelBuilder;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;
 

@@ -88,10 +88,11 @@ class CategoryService
         $productClass = $this->getProductClass();
         $productClass::createProperties1c($commerce->classifier->getProperties());
         foreach ($commerce->catalog->getProducts() as $product) {
-            if (!$model = $productClass::createModel1c($product)) {
+            if (! $model = $productClass::createModel1c($product)) {
                 if (config('exchange-1c.logging', true)) {
                     \Log::error("Модель продукта не найдена, проверьте реализацию $productClass::createModel1c");
                 }
+
                 continue;
             }
             $this->parseProduct($model, $product);

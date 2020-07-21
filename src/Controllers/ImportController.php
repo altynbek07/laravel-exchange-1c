@@ -25,7 +25,7 @@ class ImportController extends Controller
 
         try {
             if ($type == 'catalog') {
-                if (!method_exists($service, $mode)) {
+                if (! method_exists($service, $mode)) {
                     throw new Exchange1CException('not correct request, class ExchangeCML not found');
                 }
 

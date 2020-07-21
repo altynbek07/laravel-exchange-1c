@@ -80,14 +80,14 @@ class AuthService
         $login = $this->config->getLogin();
         $user = $this->session->get(self::SESSION_KEY . '_auth', null);
 
-        if (!$user || $user != $login) {
+        if (! $user || $user != $login) {
             throw new Exchange1CException('auth error');
         }
     }
 
     private function setSession(): void
     {
-        if (!$this->request->getSession()) {
+        if (! $this->request->getSession()) {
             $session = new \Symfony\Component\HttpFoundation\Session\Session();
             $session->start();
             $this->request->setSession($session);

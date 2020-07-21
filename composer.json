@@ -1,25 +1,57 @@
 {
     "name": "altynbek07/laravel-exchange-1c",
-    "description": "",
+    "description": "Laravel exchange from 1C",
+    "keywords": [
+        "laravel",
+        "exchange",
+        "1c",
+        "uploading",
+        "synchronization",
+        "1с",
+        "выгрузка",
+        "обмен",
+        "синхронизация",
+        "предприятие"
+    ],
+    "homepage": "https://github.com/altynbek07/laravel-exchange-1c",
     "license": "MIT",
     "authors": [
         {
-            "name": "altynbek07",
-            "email": "altynbek.kazezov.97@gmail.com"
+            "name": "Altynbek",
+            "email": "altynbek.kazezov.97@gmail.com",
+            "homepage": "https://github.com/altynbek07",
+            "role": "Developer"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "php": "^7.2.5",
-        "illuminate/support": "^6.0|^7.0",
-        "illuminate/routing": "^6.0|^7.0",
         "carono/commerceml": "^0.2.5"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit": "^8.5|^9.0",
+        "psalm/plugin-laravel": "^1.2",
+        "vimeo/psalm": "^3.11"
     },
     "autoload": {
         "psr-4": {
             "Altynbek07\\Exchange1C\\": "src"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Altynbek07\\Exchange1C\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "sort-packages": true
     },
     "extra": {
         "laravel": {
@@ -27,5 +59,7 @@
                 "Altynbek07\\Exchange1C\\Exchange1CServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

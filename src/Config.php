@@ -36,9 +36,9 @@ class Config
      * @var array
      */
     private $models = [
-        \Altynbek07\Exchange1C\Interfaces\GroupInterface::class   => null,
+        \Altynbek07\Exchange1C\Interfaces\GroupInterface::class => null,
         \Altynbek07\Exchange1C\Interfaces\ProductInterface::class => null,
-        \Altynbek07\Exchange1C\Interfaces\OfferInterface::class   => null,
+        \Altynbek07\Exchange1C\Interfaces\OfferInterface::class => null,
     ];
 
     /**
