@@ -3,6 +3,7 @@
 namespace Altynbek07\Exchange1C\Services;
 
 use Altynbek07\Exchange1C\Config;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -38,6 +39,10 @@ class FileLoaderService
     {
         $filename = basename($this->request->get('filename'));
         $filePath = $this->config->getFullPath($filename);
+        Log::debug('1C exchange debug', [
+            'filename' => $filename,
+            'filePath' => $filePath,
+        ]);
         if ($filename === 'orders.xml') {
             throw new \LogicException('This method is not released');
         } else {

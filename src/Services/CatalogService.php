@@ -13,7 +13,7 @@ class CatalogService extends AbstractService
     /**
      * Начало сеанса
      * Выгрузка данных начинается с того, что система "1С:Предприятие" отправляет http-запрос следующего вида:
-     * http://<сайт>/<путь> /1c-exchange?type=catalog&mode=checkauth.
+     * http://<сайт>/<путь>?type=catalog&mode=checkauth.
      * В ответ система управления сайтом передает системе «1С:Предприятие» три строки (используется разделитель строк "\n"):
      * - слово "success";
      * - имя Cookie;

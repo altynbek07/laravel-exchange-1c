@@ -24,20 +24,15 @@ class ImportController extends Controller
         $mode = $request->get('mode');
         $type = $request->get('type');
 
-        Log::debug('1C exchange debug', [
-            'mode' => $mode,
-            'type' => $type,
-        ]);
-
         try {
-            if ($type == 'catalog') {
+            if ($type === 'catalog') {
                 if (! method_exists($service, $mode)) {
                     throw new Exchange1CException('not correct request, class ExchangeCML not found');
                 }
 
                 $response = $service->$mode();
                 if (config('exchange-1c.logging', true)) {
-                    \Log::debug('exchange_1c:' . PHP_EOL . '$mode: ' . $mode . PHP_EOL . '$response:' . PHP_EOL . $response);
+                    Log::debug('exchange_1c:' . PHP_EOL . '$mode: ' . $mode . PHP_EOL . '$response:' . PHP_EOL . $response);
                 }
 
                 return response($response, 200, ['Content-Type', 'text/plain']);
@@ -46,7 +41,7 @@ class ImportController extends Controller
             }
         } catch (Exchange1CException $e) {
             if (config('exchange-1c.logging', true)) {
-                \Log::error("exchange_1c: failure \n" . $e->getMessage() . "\n" . $e->getFile() . "\n" . $e->getLine() . "\n");
+                Log::error("exchange_1c: failure \n" . $e->getMessage() . "\n" . $e->getFile() . "\n" . $e->getLine() . "\n");
             }
 
             $response = "failure\n";
