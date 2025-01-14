@@ -89,19 +89,19 @@ interface ProductInterface extends IdentifierInterface
      *
      * @return OfferInterface
      */
-    public function getOffer1c($offer);
+    public function getOffer1c($offer): OfferInterface;
 
     /**
      * @param \Zenwalker\CommerceML\Model\Product $product
      *
-     * @return self
+     * @return ProductInterface
      */
-    public static function createModel1c($product);
+    public static function createModel1c($product): ProductInterface;
 
     /**
      * @param string $id
      *
      * @return ProductInterface|null
      */
-    public static function findProductBy1c(string $id): ?self;
+    public static function findProductBy1c(string $id): ?ProductInterface;
 }

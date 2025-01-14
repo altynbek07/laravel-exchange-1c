@@ -32,7 +32,23 @@ class ImportController extends Controller
 
                 $response = $service->$mode();
                 if (config('exchange-1c.logging', true)) {
-                    Log::debug('exchange_1c:' . PHP_EOL . '$mode: ' . $mode . PHP_EOL . '$response:' . PHP_EOL . $response);
+                    $body = '';
+                    $keys = $request->keys();
+                    foreach ($keys as $key) {
+                        $body .= $key . '=' . $request->get($key) . PHP_EOL;
+                    }
+
+                    Log::debug('exchange_1c:' . PHP_EOL
+                        . '$mode: ' . $mode . PHP_EOL
+                        . '$type: ' . $type . PHP_EOL
+                        . '$response:' . PHP_EOL . $response . PHP_EOL
+                        . 'host: ' . $request->host() . PHP_EOL
+                        . 'fullUrl: ' . $request->fullUrl() . PHP_EOL
+                        . 'method: ' . $request->method() . PHP_EOL
+                        . 'ip: ' . $request->ip() . PHP_EOL
+                        . 'userAgent: ' . $request->userAgent() . PHP_EOL
+                        . 'body: ' . PHP_EOL . $body
+                    );
                 }
 
                 return response($response, 200, ['Content-Type', 'text/plain']);
