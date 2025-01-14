@@ -6,6 +6,7 @@ use Altynbek07\Exchange1C\Exceptions\Exchange1CException;
 use Altynbek07\Exchange1C\Services\CatalogService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class ImportController.
@@ -22,6 +23,11 @@ class ImportController extends Controller
     {
         $mode = $request->get('mode');
         $type = $request->get('type');
+
+        Log::debug('1C exchange debug', [
+            'mode' => $mode,
+            'type' => $type,
+        ]);
 
         try {
             if ($type == 'catalog') {
