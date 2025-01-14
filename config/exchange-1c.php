@@ -6,7 +6,7 @@ use Altynbek07\Exchange1C\Interfaces\ProductInterface;
 
 return [
     'exchange_path' => 'exchange-1c',
-    'import_dir' => storage_path('app/exchange-1c'),
+    'import_dir' => storage_path('app/private/exchange-1c'),
     'login' => env('EXCHANGE_1C_LOGIN', 'admin'),
     'password' => env('EXCHANGE_1C_PASSWORD', 'admin'),
     'use_zip' => false,
