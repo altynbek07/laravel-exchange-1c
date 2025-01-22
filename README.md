@@ -68,10 +68,6 @@ return [
     /**
      *
      */
-    'importFiles' => ['import.xml', 'offers.xml'],
-    /**
-     *
-     */
     'models' => [
         GroupInterface::class => \App\Models\Category::class,
         ProductInterface::class => \App\Models\Product::class,

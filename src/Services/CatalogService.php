@@ -13,7 +13,7 @@ class CatalogService extends AbstractService
     /**
      * Начало сеанса
      * Выгрузка данных начинается с того, что система "1С:Предприятие" отправляет http-запрос следующего вида:
-     * http://<сайт>/<путь> /1c-exchange?type=catalog&mode=checkauth.
+     * http://<сайт>/<путь>?type=catalog&mode=checkauth.
      * В ответ система управления сайтом передает системе «1С:Предприятие» три строки (используется разделитель строк "\n"):
      * - слово "success";
      * - имя Cookie;
@@ -43,7 +43,8 @@ class CatalogService extends AbstractService
     public function init(): string
     {
         $this->authService->auth();
-        $this->loaderService->clearImportDirectory();
+        // TODO: Перенести очистку импорта в конфиг
+//        $this->loaderService->clearImportDirectory();
         $zipEnable = function_exists('zip_open') && $this->config->isUseZip();
         $response = 'zip=' . ($zipEnable ? 'yes' : 'no') . "\n";
         $response .= 'file_limit=' . $this->config->getFilePart();
@@ -65,7 +66,7 @@ class CatalogService extends AbstractService
 
     /**
      * На последнем шаге по запросу из "1С:Предприятия" производится пошаговая загрузка данных по запросу
-     * с параметрами вида http://<сайт>/<путь> /1c_exchange.php?type=catalog&mode=import&filename=<имя файла>
+     * с параметрами вида http://<сайт>/<путь>?type=catalog&mode=import&filename=<имя файла>
      * Во время загрузки система управления сайтом может отвечать в одном из следующих вариантов.
      * 1. Если в первой строке содержится слово "progress" - это означает необходимость послать тот же запрос еще раз.
      * В этом случае во второй строке будет возвращен текущий статус обработки, объем  загруженных данных, статус импорта и т.д.
@@ -82,19 +83,12 @@ class CatalogService extends AbstractService
     {
         $this->authService->auth();
         $filename = $this->request->get('filename');
-        if (in_array($filename, config('exchange-1c.importFiles', ['import.xml', 'offers.xml']))) {
-            switch ($filename) {
-                case 'import.xml': {
-                        $this->categoryService->import();
 
-                        break;
-                    }
-                case 'offers.xml': {
-                        $this->offerService->import();
-
-                        break;
-                    }
-            }
+        if  (str_contains($filename, 'import')) {
+            $this->categoryService->import();
+        }
+        if  (str_contains($filename, 'offers')) {
+            $this->offerService->import();
         }
 
         $response = "success\n";
