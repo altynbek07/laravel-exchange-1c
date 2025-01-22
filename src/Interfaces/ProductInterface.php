@@ -2,7 +2,8 @@
 
 namespace Altynbek07\Exchange1C\Interfaces;
 
-use Zenwalker\CommerceML\Model\PropertyCollection;
+use Zenwalker\CommerceML\Model\Group;
+use Zenwalker\CommerceML\Collections\PropertyCollection;
 
 /**
  * Interface ProductInterface.
@@ -14,9 +15,8 @@ interface ProductInterface extends IdentifierInterface
      * не попадают в парсер, в самом конце вызывается данный метод, в $product и $cml можно получить все
      * возможные данные для ручного парсинга.
      *
-     * @param \Zenwalker\CommerceML\CommerceML    $cml
-     * @param \Zenwalker\CommerceML\Model\Product $product
-     *
+     * @param  \Zenwalker\CommerceML\CommerceML  $cml
+     * @param  \Zenwalker\CommerceML\Model\Product  $product
      * @return void
      */
     public function setRaw1cData($cml, $product);
@@ -26,21 +26,16 @@ interface ProductInterface extends IdentifierInterface
      * $name - Наименование
      * $value - Значение.
      *
-     * @param string $name
-     * @param string $value
-     *
+     * @param  string  $name
+     * @param  string  $value
      * @return void
      */
     public function setRequisite1c($name, $value);
 
     /**
-     * Предпологается, что дерево групп у Вас уже создано (\carono\exchange1c\interfaces\GroupInterface::createTree1c).
-     *
-     * @param \Zenwalker\CommerceML\Model\Group $group
-     *
-     * @return mixed
+     * Предполагается, что дерево групп у Вас уже создано (\Altynbek07\Exchange1C\Interfaces\GroupInterface::createTree1c).
      */
-    public function setGroup1c($group);
+    public function setGroup1c(Group $group): void;
 
     /**
      * import.xml > Классификатор > Свойства > Свойство
@@ -52,24 +47,17 @@ interface ProductInterface extends IdentifierInterface
      * import.xml > Классификатор > Свойства > Свойство > ВариантыЗначений > Справочник
      * $property->getValueModel() - Данные по значению, Ид значения, и т.д
      *
-     * @param \Zenwalker\CommerceML\Model\Property $property
-     *
+     * @param  \Zenwalker\CommerceML\Model\Property  $property
      * @return void
      */
     public function setProperty1c($property);
 
     /**
-     * @param string $path
-     * @param string $caption
-     *
+     * @param  string  $path
+     * @param  string  $caption
      * @return void
      */
     public function addImage1c($path, $caption);
-
-    /**
-     * @return GroupInterface
-     */
-    public function getGroup1c();
 
     /**
      * Создание всех свойств продутка
@@ -78,30 +66,20 @@ interface ProductInterface extends IdentifierInterface
      * $properties[]->availableValues - список доступных значений, для этого свойства
      * import.xml > Классификатор > Свойства > Свойство > ВариантыЗначений > Справочник
      *
-     * @param PropertyCollection $properties
-     *
+     * @param  PropertyCollection  $properties
      * @return mixed
      */
     public static function createProperties1c($properties);
 
     /**
-     * @param \Zenwalker\CommerceML\Model\Offer $offer
-     *
-     * @return OfferInterface
+     * @param  \Zenwalker\CommerceML\Model\Offer  $offer
      */
     public function getOffer1c($offer): OfferInterface;
 
     /**
-     * @param \Zenwalker\CommerceML\Model\Product $product
-     *
-     * @return ProductInterface
+     * @param  \Zenwalker\CommerceML\Model\Product  $product
      */
     public static function createModel1c($product): ProductInterface;
 
-    /**
-     * @param string $id
-     *
-     * @return ProductInterface|null
-     */
     public static function findProductBy1c(string $id): ?ProductInterface;
 }
